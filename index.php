@@ -24,7 +24,7 @@
         }
     }
     Echo "<button type=\"button\" class=\"collapsible\">Most Recent Game</button>\n\n";
-    Echo "<table class='content'>\n\n";
+    Echo "<table class=\"content toggle\">\n\n";
     $f = fopen($directory.$lastfile, "r");
     while (($line = fgetcsv($f)) !== false) {
       Echo "<tr>";

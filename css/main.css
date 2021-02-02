@@ -1,3 +1,7 @@
+.toggle {
+  display: none;
+}
+
 .content {
   padding: 0 18px;
   overflow: hidden;

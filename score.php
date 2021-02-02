@@ -21,7 +21,7 @@
       foreach (scandir($directory) as $file) {
           if ($file !== '.' && $file !== '..') {
               echo "<button type=\"button\" class=\"collapsible\">".$file."</button>\n\n";
-              echo "<table class=\"content\">\n\n";
+              echo "<table class=\"content toggle\">\n\n";
               $f = fopen($directory.$file, "r");
               while (($line = fgetcsv($f)) !== false) {
                 echo "<tr>";
