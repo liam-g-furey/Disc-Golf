@@ -36,7 +36,7 @@
     fclose($f);
     Echo "\n</table>";
 
-    $command = escapeshellcmd('Python/lastWinner.py "'.$directory.$lastfile.'"');
+    $command = escapeshellcmd('python3 Python/lastWinner.py "'.$directory.$lastfile.'"');
     $output = shell_exec($command);
     Echo  "<h2>Last Winner: ".$output."</h2>";
   ?>
