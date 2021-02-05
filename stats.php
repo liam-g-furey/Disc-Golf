@@ -18,7 +18,7 @@
         exit('Invalid diretory path');
     }
 
-    $command = escapeshellcmd('Python/totalWins.py');
+    $command = escapeshellcmd('python3 Python/totalWins.py');
     $output = shell_exec($command);
     echo  "<h2> Total Wins </h2>";
     echo "<table class='content'>\n\n";
@@ -33,7 +33,7 @@
     fclose($f);
     echo "\n</table>";
 
-    $command = escapeshellcmd('Python/BestScore.py');
+    $command = escapeshellcmd('python3 Python/BestScore.py');
     $output = shell_exec($command);
     echo  "<h2> Best Scores </h2>";
     echo "<table class='content'>\n\n";
@@ -48,7 +48,7 @@
     fclose($f);
     echo "\n</table>";
 
-    $command = escapeshellcmd('Python/WorstScore.py');
+    $command = escapeshellcmd('python3 Python/WorstScore.py');
     $output = shell_exec($command);
     echo  "<h2> Worst Scores </h2>";
     echo "<table class='content'>\n\n";
