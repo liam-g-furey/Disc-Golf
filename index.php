@@ -2,13 +2,11 @@
 <html>
 <head>
   <title>Disc Golf Score Tracker</title>
-  <link rel="stylesheet" type="text/css" href="css/main.css" />
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
+  <?php include('include/head.php'); ?>
 </head>
 <body>
-  <?php include 'include/topnav.include.php'; ?>
-
+  <?php include('include/topnav.php'); ?>
+  
   <h1>17D Disc Golf Tour</h1>
 
   <?php

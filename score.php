@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Disc Golf Score Tracker</title>
-  <link rel="stylesheet" type="text/css" href="css/main.css" />
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
+  <title>Disc Golf - Score</title>
+  <?php include('include/head.php'); ?>
 </head>
 <body>
-  <?php include 'include/topnav.include.php'; ?>
+  <?php include 'include/topnav.php'; ?>
 
   <h1>All Score Cards</h1>
 
