@@ -14,8 +14,9 @@
   <?php
     $directory = 'games/';
 
-    $lastfile = end(glob("$directory*.csv"));
-    $f = fopen($directory.$lastfile, "r");
+    $files = glob("$directory*.csv");
+    $lastfile = end($files);
+    $f = fopen($lastfile, "r");
     while (($line = fgetcsv($f)) !== false) {
       echo "<tr>";
       foreach ($line as $cell) {
@@ -26,7 +27,7 @@
     fclose($f);
     echo "</table>";
 
-    $command = escapeshellcmd('python3 Python/getWinner.py "'.$directory.$lastfile.'"');
+    $command = "python3 Python/getWinner.py \"$lastfile\"";
     $output = shell_exec($command);
     echo  "<h2>Last Winner: ".$output."</h2>";
   ?>
