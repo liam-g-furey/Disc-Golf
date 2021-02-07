@@ -8,35 +8,27 @@
   <?php include('include/topnav.php'); ?>
   
   <h1>17D Disc Golf Tour</h1>
+  <button class="collapsible">Most Recent Game</button>
+  <table class="content toggle">
 
   <?php
     $directory = 'games/';
 
-    if (!is_dir($directory)) {
-        exit('Invalid diretory path');
-    }
-
-    foreach (scandir($directory) as $file) {
-        if ($file !== '.' && $file !== '..') {
-            $lastfile = $file;
-        }
-    }
-    Echo "<button type=\"button\" class=\"collapsible\">Most Recent Game</button>\n\n";
-    Echo "<table class=\"content toggle\">\n\n";
+    $lastfile = end(glob("$directory*.csv"));
     $f = fopen($directory.$lastfile, "r");
     while (($line = fgetcsv($f)) !== false) {
-      Echo "<tr>";
+      echo "<tr>";
       foreach ($line as $cell) {
-        Echo "<td>" . htmlspecialchars($cell) . "</td>";
+        echo "<td>" . htmlspecialchars($cell) . "</td>";
       }
-      Echo "</tr>\n";
+      echo "</tr>\n";
     }
     fclose($f);
-    Echo "\n</table>";
+    echo "</table>";
 
-    $command = escapeshellcmd('python3 Python/lastWinner.py "'.$directory.$lastfile.'"');
+    $command = escapeshellcmd('python3 Python/getWinner.py "'.$directory.$lastfile.'"');
     $output = shell_exec($command);
-    Echo  "<h2>Last Winner: ".$output."</h2>";
+    echo  "<h2>Last Winner: ".$output."</h2>";
   ?>
 <script>
 window.onload = function () {
