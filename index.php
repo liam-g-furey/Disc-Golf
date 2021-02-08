@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html> 
+<head>
+    <link rel="stylesheet" type="text/css" href="css/tables.css" media="screen"/>
+
  <title>Disc Golf Score Tracker</title>
  <div class="topnav">
   <a  href="/index.php">Home</a>
@@ -18,22 +21,53 @@
         exit('Invalid diretory path');
     }
 
+    
+    Echo "<button type='button' class='collapsible'>Most Recent Game</button>\n\n";
+    Echo "<html><body><table class='styled-table'>\n\n";
+
+
+
+    Echo "<thead class='Table_THEAD'>\n";
+
+    Echo "<tr class='Table_TR'>\n";
+    Echo "<th class='Table_TH'> POS </th>\n";
+    Echo "<th class='Table_TH'> PLAYER </th>\n";
+    Echo "<th class='Table_TH'> TO PAR </th>\n";
+    Echo "<th class='Table_TH'> FR </th>\n";
+    Echo "<th class='Table_TH'> BK </th>\n";
+    Echo "<th class='Table_TH'> TOT </th>\n";
+
+    Echo "</tr>\n";
+
+    Echo "</thead>\n";
+
     foreach (scandir($directory) as $file) {
         if ($file !== '.' && $file !== '..') {
             $lastfile = $file;
         }
     }
-    Echo "<button type='button' class='collapsible'>Most Recent Game</button>\n\n";
-    Echo "<html><body><table class='content'>\n\n";
-    $f = fopen($directory.$lastfile, "r");
-    while (($line = fgetcsv($f)) !== false) {
-      Echo "<tr>";
-      foreach ($line as $cell) {
-        Echo "<td>" . htmlspecialchars($cell) . "</td>";
-      }
-      Echo "</tr>\n";
+
+    if (!str_contains($lastfile,"_formatted")){
+      $command = escapeshellcmd('Python/formatGame.py "'.$directory.$lastfile.'"');
+      $output = shell_exec($command);
+      $lastfile = ($lastfile . "_formatted.csv");
     }
+
+
+    $f = fopen($directory.$lastfile, "r");
+    if ($f){
+      while (($line = fgetcsv($f)) !== false) {
+        Echo "<tr>";
+        foreach ($line as $cell) {
+          Echo "<td class='Table_TD'>" . htmlspecialchars($cell) . "</td>";
+        }
+        Echo "</tr>\n";
+      }
     fclose($f);
+    } else {
+      die("Unable to open $directory.$lastfile");
+    }
+    
     Echo "\n</table></body></html>";
 
     $command = escapeshellcmd('Python/lastWinner.py "'.$directory.$lastfile.'"');
@@ -61,10 +95,14 @@ for (i = 0; i < coll.length; i++) {
 
 
 .content {
-  padding: 0 18px;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
   display: none;
-  overflow: hidden;
-  background-color: #f1f1f1;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
 }
 .topnav {
   background-color: #333;
