@@ -1,90 +1,39 @@
 <!DOCTYPE html>
-<html> 
- <title>Disc Golf Score Tracker</title>
- <div class="topnav">
-  <a  href="/index.php">Home</a>
-  <a href="/score.php">Score Cards</a>
-  <a href="/stats.php">Stats</a>
-  <a href="/courses.php">Courses</a>
-</div>
- <body>
- <h1>All Score Cards</h1>
+<html>
+<head>
+  <title>Disc Golf - Score</title>
+  <?php include('include/head.php'); ?>
+</head>
+<body>
+  <?php include 'include/topnav.php'; ?>
 
-<?php
-    $directory = 'games/';
+  <h1>All Score Cards</h1>
 
-    if (!is_dir($directory)) {
-        exit('Invalid diretory path');
-    }
+  <?php
+      $directory = 'games/';
 
-    foreach (scandir($directory) as $file) {
-        if ($file !== '.' && $file !== '..') {
-            Echo "<button type='button' class='collapsible'>".$file."</button>\n\n";
-            Echo "<html><body><table class='content'>\n\n";
-            $f = fopen($directory.$file, "r");
-            while (($line = fgetcsv($f)) !== false) {
-              Echo "<tr>";
-              foreach ($line as $cell) {
-                Echo "<td>" . htmlspecialchars($cell) . "</td>";
+      if (!is_dir($directory)) {
+          exit('Invalid diretory path');
+      }
+
+      foreach (scandir($directory) as $file) {
+          if ($file !== '.' && $file !== '..') {
+              echo "<button type=\"button\" class=\"collapsible\">".$file."</button>\n\n";
+              echo "<table class=\"content toggle\">\n\n";
+              $f = fopen($directory.$file, "r");
+              while (($line = fgetcsv($f)) !== false) {
+                echo "<tr>";
+                foreach ($line as $cell) {
+                  echo "<td>" . htmlspecialchars($cell) . "</td>";
+                }
+                echo "</tr>\n";
               }
-              Echo "</tr>\n";
-            }
-            fclose($f);
-            Echo "\n</table></body></html>";
-        }
-    }
-?>
-<script>
-var coll = document.getElementsByClassName("collapsible");
-var i;
+              fclose($f);
+              echo "\n</table>";
+          }
+      }
+  ?>
 
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.display === "block") {
-      content.style.display = "none";
-    } else {
-      content.style.display = "block";
-    }
-  });
-}
-</script>
-<style>
-
-
-.content {
-  padding: 0 18px;
-  display: none;
-  overflow: hidden;
-  background-color: #f1f1f1;
-}
-.topnav {
-  background-color: #333;
-  overflow: hidden;
-}
-
-/* Style the links inside the navigation bar */
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-/* Change the color of links on hover */
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* Add a color to the active/current link */
-.topnav a.active {
-  background-color: #4CAF50;
-  color: white;
-}
-</style>
- </body>
- </html>
+  <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
