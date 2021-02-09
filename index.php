@@ -8,23 +8,43 @@
   <?php include('include/topnav.php'); ?>
   
   <h1>17D Disc Golf Tour</h1>
-  <button class="collapsible">Most Recent Game</button>
-  <table class="content toggle">
+  <table class="styled-table">
+    <thead class='Table_THEAD'>
+      <tr class='Table_TR'>
+        <th class='Table_TH'> POS </th>
+        <th class='Table_TH'> PLAYER </th>
+        <th class='Table_TH'> TO PAR </th>
+        <th class='Table_TH'> FR </th>
+        <th class='Table_TH'> BK </th>
+        <th class='Table_TH'> TOT </th>
+      </tr>
+    </thead>
 
   <?php
     $directory = 'games/';
-
     $files = glob("$directory*.csv");
     $lastfile = end($files);
-    $f = fopen($lastfile, "r");
-    while (($line = fgetcsv($f)) !== false) {
-      echo "<tr>";
-      foreach ($line as $cell) {
-        echo "<td>" . htmlspecialchars($cell) . "</td>";
-      }
-      echo "</tr>\n";
+
+    if (!str_contains($lastfile,"_formatted")){
+      $command = "python3 Python/formatGame.py \"$lastfile\"";
+      $output = shell_exec($command);
+      $lastfile = ($lastfile . "_formatted.csv");
     }
-    fclose($f);
+
+    $f = fopen($lastfile, "r");
+    if ($f){
+      while (($line = fgetcsv($f)) !== false) {
+        echo "<tr>";
+        foreach ($line as $cell) {
+          echo "<td class='Table_TD'>" . htmlspecialchars($cell) . "</td>";
+        }
+        echo "</tr>\n";
+      }
+      fclose($f);
+    } else {
+      die("Unable to open $lastfile");
+    }
+    
     echo "</table>";
 
     $command = "python3 Python/getWinner.py \"$lastfile\"";
