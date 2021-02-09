@@ -40,7 +40,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
   animationEnabled: true,
   exportEnabled: true,
   title:{
-    text: "League's Average Performance"
+    text: "Weighted Average Performance"
   },
   axisY: {
     title: "Strokes"
@@ -52,7 +52,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
   }]
 });
  
-$.get("ScriptFiles/Averages.csv", getDataPointsFromCSV);
+$.get("ScriptFiles/WeightedAveragePerformance.csv", getDataPointsFromCSV);
  
 //CSV Format
 //Year,Volume
