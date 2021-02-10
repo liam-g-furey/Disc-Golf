@@ -25,7 +25,9 @@ def format():
 		data_table.sort(key = lambda player_line: calculate_scores(player_line, front_start, back_start)[2])
 
 		player_olist = [_[0] for _ in data_table]
-		player_olist[player_olist.index('Discer')] = 'Aidan'
+
+		if ('Discer' in player_olist):
+			player_olist[player_olist.index('Discer')] = 'Aiden' 
 
 		scores = [calculate_scores(_, front_start, back_start)[2] for _ in data_table]
 		score_dict = {p:s for p,s in zip(player_olist, scores)}
@@ -39,7 +41,7 @@ def format():
 
 		pos = calculate_placings(list(zip(player_olist, scores)))
 
-		data = []
+		data = [["POS","PLAYER","TO PAR", "FR", "BK", "TOT"]]
 		for player in player_olist:
 			data.append([
 				pos[player],

@@ -15,7 +15,7 @@
     $files = glob("$directory*.csv");
     $lastfile = end($files);
 
-    if (stripos($lastfile,"_formatted")){
+    if (!stripos($lastfile,"_formatted")){
       $command = "python3 Python/formatGame.py \"$lastfile\"";
       $output = shell_exec($command);
       $lastfile = ($lastfile . "_formatted.csv");
