@@ -1,12 +1,20 @@
+body {
+  margin: 0;
+  background-color: #f1f1f1;
+}
+
 .toggle {
   display: none;
 }
 
 .content {
-  padding: 0 18px;
-  overflow: hidden;
-  background-color: #f1f1f1;
+  padding: 10px;
 }
+
+button {
+  margin-bottom: 20px;
+}
+
 .topnav {
   background-color: #333;
   overflow: hidden;
