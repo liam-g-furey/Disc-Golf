@@ -53,16 +53,18 @@
     }]
   });
  
-  $.get("ScriptFiles/WeightedAveragePerformance.csv", getDataPointsFromCSV);
+  $.get("ScriptFiles/WeightedAveragePerformance.csv?d=" + (new Date()).getTime(), getDataPointsFromCSV);
  
   //CSV Format
   //Year,Volume
   function getDataPointsFromCSV(csv) {
     var csvLines = points = [];
     csvLines = csv.split(/[\r?\n|\r|\n]+/);
+    console.log(csvLines);
     for (var i = 0; i < csvLines.length; i++) {
       if (csvLines[i].length > 0) {
         points = csvLines[i].split(",");
+        console.log(points)
         dataPoints.push({
           label: points[0],
           y: parseFloat(points[1])

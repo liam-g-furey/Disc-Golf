@@ -24,8 +24,8 @@ def total_winner():
 			else:
 				total_Wins[winner_person] = 1
 	total_Wins = dict(sorted(total_Wins.items(), key=lambda item: item[1]))
-	for (i,j) in total_Wins.items():
-		print(i + "'s games won : " + str(j))
+	#for (i,j) in total_Wins.items():
+	#	print(i + "'s games won : " + str(j))
 	with open('ScriptFiles/Total_Wins.csv',mode="w") as best_file:
 		best_writer = csv.writer(best_file, delimiter=',', quotechar='"',quoting=csv.QUOTE_MINIMAL)
 		best_writer.writerow(['Name', 'Wins'])

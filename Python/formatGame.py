@@ -27,7 +27,7 @@ def format():
 		player_olist = [_[0] for _ in data_table]
 
 		if ('Discer' in player_olist):
-			player_olist[player_olist.index('Discer')] = 'Aiden' 
+			player_olist[player_olist.index('Discer')] = 'Aidan' 
 
 		scores = [calculate_scores(_, front_start, back_start)[2] for _ in data_table]
 		score_dict = {p:s for p,s in zip(player_olist, scores)}
