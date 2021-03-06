@@ -24,10 +24,13 @@ cp -Rp ./* /var/www/disc/ \
     || fail 'Failed to add new files'
 
 echo '[+] Running scripts...'
-$(cd /var/www/disc && python3 Python/totalWins.py) || fail 'Failed to run totalWins.py'
-$(cd /var/www/disc && python3 Python/BestScore.py) || fail 'Failed to run BestScore.py'
-$(cd /var/www/disc && python3 Python/WorstScore.py) || fail 'Failed to run WorstScore.py'
-$(cd /var/www/disc && python3 Python/ScoresChart.py) || fail 'Failed to run ScoresChart.py'
-$(cd /var/www/disc && python3 Python/WeightedAveragePerformance.py) || fail 'Failed to run WeightedAveragePerformance.py'
+cd /var/www/disc
+python3 Python/genStats.py || fail 'Failed to run genStats.py'
+#python3 Python/totalWins.py || fail 'Failed to run totalWins.py'
+#python3 Python/BestScore.py || fail 'Failed to run BestScore.py'
+#python3 Python/WorstScore.py || fail 'Failed to run WorstScore.py'
+python3 Python/ScoresChart.py || fail 'Failed to run ScoresChart.py'
+python3 Python/WeightedAveragePerformance.py || fail 'Failed to run WeightedAveragePerformance.py'
+cd -
 
 echo '[+] Done!'
