@@ -11,10 +11,11 @@ function buildTable($filename, $btnText) {
         // Parse Headers
         if (($headers = fgetcsv($handle, 512, ",")) !== FALSE) {
             echo "<thead><tr>";
+            $counter = 0;
             foreach($headers as $header) {
-                echo "<th>" . htmlspecialchars($header) . "</th>";
+                echo "<th onclick=\"sortTable(this, " . $counter++ . ")\">" . htmlspecialchars($header) . "</th>";
             }
-            echo "</tr></thead>";
+            echo "</tr></thead><tbody>";
         } else {
             die('Game file is empty or not a CSV:' . $filename);
         }
@@ -30,7 +31,7 @@ function buildTable($filename, $btnText) {
 
         // Cleanup
         fclose($handle);
-        echo "</table></div>";
+        echo "</tbody></table></div>";
     } else {
         die('Error opening game file: ' . $filename);
     }
