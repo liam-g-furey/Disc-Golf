@@ -2,32 +2,19 @@
 <html>
 <head>
     <title>Disc Golf Score Tracker</title>
+    <script src="js/libdisc.js"></script>
     <?php include('include/head.php'); ?>
 </head>
-<body>
+<body onload="populateTable('last-game')">
     <?php include('include/topnav.php'); ?>
     <div class="content">
         <h1>17D Disc Golf Tour</h1>
-        <?php
-
-        include('include/display.php');
-        $directory = 'games/';
-        $files = glob("$directory*.csv");
-        $lastfile = end($files);
-
-        $command = "python3 Python/getWinner.py \"$lastfile\"";
-        $output = shell_exec($command);
-        echo  "<h2>Last Winner: ".$output."</h2>";
-
-        if (!stripos($lastfile,"_formatted")){
-            $command = "python3 Python/formatGame.py \"$lastfile\"";
-            $output = shell_exec($command);
-            $lastfile = ($lastfile . "_formatted.csv");
-        }
-
-        buildTable($lastfile, "Show Last Game");
-        ?>
-
+        <div class="collapsible">
+            <button>Toggle Game</button>
+            <div id="last-game"></div>
+        </div>
+    </div>
+        <!--
         <div id="chartContainer" style="width: 100%;"></div>
     </div>
 
@@ -73,7 +60,7 @@
     }
 
     }
-    </script>
+    </script> -->
 
     <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
