@@ -28,6 +28,6 @@ cd /var/www/disc
 python3 Python/genData.py || fail 'Failed to run genData.py'
 #python3 Python/ScoresChart.py || fail 'Failed to run ScoresChart.py'
 #python3 Python/WeightedAveragePerformance.py || fail 'Failed to run WeightedAveragePerformance.py'
-cd -
+cd - >/dev/null
 
 echo '[+] Done!'

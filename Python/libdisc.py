@@ -32,6 +32,20 @@ def getWinners(game: dict):
     _, *names = winners
     return names
 
+def getCourseById(course_id: int, basePath='.'):
+    courses_file = os.path.join(basePath, 'data', 'courses.csv')
+    if not os.path.isfile(courses_file):
+        return False
+    
+    course = False
+    with open(courses_file) as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            if int(row['ID']) == course_id:
+                course = row
+                break
+    return course
+
 def getGamesBySeason(season: int, basePath='.'):
     season_file = os.path.join(basePath, 'data', f'season{season}.csv')
     if not os.path.isfile(season_file):
@@ -53,21 +67,15 @@ def getGamesBySeason(season: int, basePath='.'):
 
     for game in games:
         game['winners'] = getWinners(game)
+        course = getCourseById(game['courseID'])
+        game['course'] = {
+            'location': course['Location'],
+            'name': course['Name'],
+            'par': int(course['Par']),
+            'holes': [ int(y) for x,y in course.items() if re.match(r'^H\d\d?$', x) ][:int(course['Holes'])]
+        }
+        del game['courseID']
     return games
-
-def getCourseById(course_id: int, basePath='.'):
-    courses_file = os.path.join(basePath, 'data', 'courses.csv')
-    if not os.path.isfile(courses_file):
-        return False
-    
-    course = False
-    with open(courses_file) as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            if int(row['ID']) == course_id:
-                course = row
-                break
-    return course
 
 def getMostRecentGame(games: dict):
     recent = (games[0]['date'], 0)

@@ -2,24 +2,23 @@
 <html>
 <head>
     <title>Disc Golf Score Tracker</title>
+    <script type="text/javascript" src="js/main.js"></script>
     <script src="js/libdisc.js"></script>
     <?php include('include/head.php'); ?>
 </head>
-<body onload="populateTable('last-game')">
+<body onload="populateLastGame('game');">
     <?php include('include/topnav.php'); ?>
     <div class="content">
         <h1>17D Disc Golf Tour</h1>
         <div class="collapsible">
-            <button>Toggle Game</button>
-            <div id="last-game"></div>
+            <button onclick="collapse('game')">Show Game</button>
+            <div id="game"></div>
         </div>
-    </div>
-        <!--
+
         <div id="chartContainer" style="width: 100%;"></div>
     </div>
 
-
-    <script>
+    <!-- <script>
     window.onload = function () {
 
     var dataPoints = [];
@@ -64,6 +63,5 @@
 
     <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

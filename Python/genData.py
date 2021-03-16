@@ -21,11 +21,8 @@ def main():
         return False
 
     for game in games:
-        if not (course := disc.getCourseById(game['courseID'])):
-            continue
-        par = int(course['Par'])
         for player in game['players']:
-            overPar = player['total'] - par
+            overPar = player['total'] - game['course']['par']
             if player['name'] in stats_by_person:
                 stats_by_person[player['name']]['best'] = min(
                     stats_by_person[player['name']]['best'],
