@@ -1,18 +1,33 @@
 body {
   margin: 0;
-  background-color: #f1f1f1;
-}
-
-.toggle {
-  display: none;
+  background-color: #8a8a8a;
+  text-align: center;
 }
 
 .content {
   padding: 10px;
 }
 
-button {
+.collapsible {
+  background-color: rgb(165, 156, 30);
+  border: 3px solid rgb(32, 32, 32);
   margin-bottom: 20px;
+  border-radius: 10px;
+  margin-right: 10%;
+  margin-left: 10%;
+  overflow-x: auto;
+  padding: 20px;
+}
+
+.scroll-block {
+  background-color: rgb(104, 104, 104);
+  border: 3px solid rgb(32, 32, 32);
+  border-radius: 10px;
+  overflow-y: scroll;
+  margin-right: 10%;
+  margin-left: 10%;
+  padding: 10px;
+  height: 80vh;
 }
 
 .topnav {
@@ -20,23 +35,20 @@ button {
   overflow: hidden;
 }
 
-/* Style the links inside the navigation bar */
 .topnav a {
   float: left;
-  color: #f2f2f2;
+  color: gold;
+  font-size: 17px;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
 }
 
-/* Change the color of links on hover */
 .topnav a:hover {
   background-color: #ddd;
   color: black;
 }
 
-/* Add a color to the active/current link */
 .topnav a.active {
   background-color: #4CAF50;
   color: white;

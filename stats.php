@@ -6,22 +6,14 @@
     <script src="js/libtable.js"></script>
     <?php include('include/head.php'); ?>
 </head>
-<body>
+<body onload="populateStats(1, 'stats');">
     <?php include('include/topnav.php'); ?>
     <div class="content">
         <h1>Statistics</h1>
-        <?php
-
-        include('include/display.php');
-        $directory = 'ScriptFiles/';
-
-        if (!is_dir($directory)) {
-            exit('Invalid directory path');
-        }
-
-        buildTable($directory . 'stats.csv', 'Show');
-
-        ?>
+        <div class="collapsible">
+            <button onclick="collapse('stats')">Show Stats</button>
+            <div id="stats"></div>
+        </div>
     </div>
 </body>
 </html>

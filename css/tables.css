@@ -1,6 +1,7 @@
 table {
 	border-collapse: collapse;
-	margin-bottom: 20px;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 th, td {
@@ -8,12 +9,21 @@ th, td {
 	text-align: center;
 }
 
-thead {
-	background: rgb(134, 134, 134);
-}
-
 tr:nth-child(even) {
 	background: rgb(224, 224, 224);
+}
+
+tr:nth-child(odd) {
+	background: rgb(182, 182, 182);
+}
+
+thead tr:first-child {
+	background-color: rgb(63, 63, 63);
+	color: lightgray;
+}
+
+.gameTable tbody tr:first-child {
+	background-color: rgb(93, 119, 136);
 }
 
 td, th {

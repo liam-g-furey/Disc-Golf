@@ -10,6 +10,7 @@
     <?php include('include/topnav.php'); ?>
     <div class="content">
         <h1>17D Disc Golf Tour</h1>
+        <p><b>Most Recent Game</b></p>
         <div class="collapsible">
             <button onclick="collapse('game')">Show Game</button>
             <div id="game"></div>

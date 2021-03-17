@@ -10,7 +10,7 @@
     <?php include('include/topnav.php'); ?>
     <div class="content">
         <h1>All Score Cards</h1>
-        <div id="games"></div>
+        <div id="games" class="scroll-block"></div>
     </div>
 </body>
 </html>

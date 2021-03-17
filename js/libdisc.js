@@ -69,6 +69,7 @@ function populateGame(div_id, game) {
     let table = document.createElement('table');
     let thead = document.createElement('thead');
     let tbody = document.createElement('tbody');
+    table.classList.add('gameTable');
     table.hidden = true;
 
     // Populate table header
@@ -151,4 +152,47 @@ function populateGames(div_id) {
             counter += 1;
         })
     })
+}
+
+function populateStats(season, div_id) {
+    loadJSON(`data/stats${season}.json`).then(function(stats) {
+        let div = document.getElementById(div_id);
+        
+        // Info element
+        let elem = document.createElement('p');
+        elem.innerText = `Season ${season}`;
+        div.appendChild(elem);
+
+        // Table elements
+        let table = document.createElement('table');
+        let thead = document.createElement('thead');
+        let tbody = document.createElement('tbody');
+
+        // Populate table header
+        let headers = ['Player', 'Wins', 'Average', 'Best', 'Worst'];
+        let tr = document.createElement('tr');
+        headers.forEach(header => {
+            let th = document.createElement('th')
+            th.innerText = header;
+            tr.appendChild(th);
+        })
+        thead.appendChild(tr);
+        table.appendChild(thead);
+
+        // Populate table body
+        Object.keys(stats).forEach(player => {
+            tr = document.createElement('tr');
+            let td = document.createElement('td');
+            td.innerText = player;
+            tr.appendChild(td);
+            Object.keys(stats[player]).forEach(stat => {
+                td = document.createElement('td');
+                td.innerText = stats[player][stat];
+                tr.appendChild(td);
+            });
+            tbody.appendChild(tr);
+        });
+        table.appendChild(tbody);
+        div.appendChild(table);
+    });
 }
