@@ -2,8 +2,8 @@
 <html>
 <head>
     <title>Disc Golf Score Tracker</title>
-    <script type="text/javascript" src="js/main.js"></script>
     <script src="js/libdisc.js"></script>
+    <script src="js/libtable.js"></script>
     <?php include('include/head.php'); ?>
 </head>
 <body onload="populateLastGame('game');">

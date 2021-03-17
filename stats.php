@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Disc Golf - Stats</title>
-  <?php include('include/head.php'); ?>
+    <title>Disc Golf - Stats</title>
+    <script src="js/libdisc.js"></script>
+    <script src="js/libtable.js"></script>
+    <?php include('include/head.php'); ?>
 </head>
 <body>
-  <?php include 'include/topnav.php'; ?>
+    <?php include('include/topnav.php'); ?>
+    <div class="content">
+        <h1>Statistics</h1>
+        <?php
 
-  <h1>Statistics</h1>
+        include('include/display.php');
+        $directory = 'ScriptFiles/';
 
-  <?php
-  include('include/display.php');
-    $directory = 'ScriptFiles/';
+        if (!is_dir($directory)) {
+            exit('Invalid directory path');
+        }
 
-    if (!is_dir($directory)) {
-        exit('Invalid diretory path');
-    }
+        buildTable($directory . 'stats.csv', 'Show');
 
-    buildTable($directory . "stats.csv", "Show");
-  ?>
-  
-
-  <script type="text/javascript" src="js/main.js"></script>
-
+        ?>
+    </div>
 </body>
 </html>
