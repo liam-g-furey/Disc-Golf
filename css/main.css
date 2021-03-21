@@ -1,7 +1,9 @@
 body {
-  margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   background-color: #8a8a8a;
+  line-height: normal;
   text-align: center;
+  margin: 0;
 }
 
 .content {
@@ -9,7 +11,7 @@ body {
 }
 
 .collapsible {
-  background-color: rgb(165, 156, 30);
+  background-color: rgb(218, 185, 0);
   border: 3px solid rgb(32, 32, 32);
   margin-bottom: 20px;
   border-radius: 10px;
@@ -52,4 +54,19 @@ body {
 .topnav a.active {
   background-color: #4CAF50;
   color: white;
+}
+
+button {
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #8a8a8a;
+  border: 2px solid rgb(29, 29, 29);
+}
+
+button:active {
+  background-color: rgb(80, 80, 80);
+}
+
+button:focus {
+  outline: none;
 }

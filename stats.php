@@ -11,7 +11,7 @@
     <div class="content">
         <h1>Statistics</h1>
         <div class="collapsible">
-            <button onclick="collapse('stats')">Show Stats</button>
+            <button onclick="collapse('stats')">Toggle Stats</button>
             <div id="stats"></div>
         </div>
     </div>

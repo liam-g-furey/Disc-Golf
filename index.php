@@ -12,7 +12,7 @@
         <h1>17D Disc Golf Tour</h1>
         <p><b>Most Recent Game</b></p>
         <div class="collapsible">
-            <button onclick="collapse('game')">Show Game</button>
+            <button onclick="collapse('game')">Toggle Game</button>
             <div id="game"></div>
         </div>
 

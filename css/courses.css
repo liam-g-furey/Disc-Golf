@@ -1,27 +1,10 @@
-body {
-    font-family: "Raleway";
-
-}
-
-.content {
-    max-width: 1600px;
-}
-
 .w3-third img {
     width: 100%;
-    margin-bottom: -6px;
-    opacity: 0.8;
+    padding: 5px;
     cursor: pointer;
+    border-radius: 10px;
 }
 
 .w3-third img:hover {
-    opacity: 1;
-}
-
-.w3-main {
-    margin-left: 300px;
-}
-
-.w3-hide-large {
-    margin-top: 83px;
+    opacity: 0.8;
 }

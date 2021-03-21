@@ -3,21 +3,16 @@
 <head>
     <title>Disc Golf - Courses</title>
     <link rel="stylesheet" href="css/courses.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <script src="js/courses.js"></script>
     <?php include('include/head.php'); ?>
 </head>
 <body>
     <?php include('include/topnav.php'); ?>
-    <div class="content w3-light-grey w3-content">
+    <div class="content w3-content">
         <h1>17D Disc Golf Tour Locations</h1>
 
         <!-- Course Content -->
         <div class="w3-main">
-            
-            <!-- Push down content on small screens -->
-            <div class="w3-hide-large"></div>
 
             <!-- Photo grid -->
             <div class="w3-row">
@@ -43,8 +38,8 @@
             <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
                 <span class="w3-button w3-black w3-xlarge w3-display-topright">×</span>
                 <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-                    <img id="img01" class="w3-image">
                     <p id="caption"></p>
+                    <img id="img01" class="w3-image">
                 </div>
             </div>
         </div>

@@ -141,7 +141,7 @@ function populateGames(div_id) {
 
             let button = document.createElement('button');
             button.setAttribute('onclick', `collapse('game${counter}')`);
-            button.innerText = 'Show Game';
+            button.innerText = 'Toggle Game';
             collapsible.appendChild(button);
 
             let game_div = document.createElement('div');
