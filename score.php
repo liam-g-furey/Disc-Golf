@@ -2,23 +2,15 @@
 <html>
 <head>
     <title>Disc Golf - Score</title>
+    <script src="js/libdisc.js"></script>
+    <script src="js/libtable.js"></script>
     <?php include('include/head.php'); ?>
 </head>
-<body>
-    <?php include 'include/topnav.php'; ?>
+<body onload="populateGames('games');">
+    <?php include('include/topnav.php'); ?>
     <div class="content">
         <h1>All Score Cards</h1>
-        <?php
-        include('include/display.php');
-        $directory = 'games/';
-        $files = glob("$directory*.csv");
-
-        foreach($files as $file) {
-            buildTable($file, explode("/", $file)[1]);
-        }
-        ?>
+        <div id="games" class="scroll-block"></div>
     </div>
-
-    <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,10 @@
+.w3-third img {
+    width: 100%;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.w3-third img:hover {
+    opacity: 0.8;
+}

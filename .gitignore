@@ -1,4 +1,5 @@
 **/__pycache__
 **/.vs
-games/*_formatted.csv
-ScriptFiles/*
+ScriptFiles/
+data/raw*
+data/stats*
